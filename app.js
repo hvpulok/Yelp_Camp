@@ -6,13 +6,26 @@ app.use(express.static("public")); //to automatically get files under public/ an
 app.set("view engine", "ejs"); // to exclude extention of "ejs" files
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
 
+var campgroundData = [
+        {name: "Camp 1", image: "https://farm4.staticflickr.com/3270/2617191414_c5d8a25a94.jpg" },
+        {name: "Camp 2", image: "https://farm3.staticflickr.com/2464/3694344957_14180103ed.jpg" },
+        {name: "Camp 3", image: "https://farm4.staticflickr.com/3872/14435096036_39db8f04bc.jpg" },
+        {name: "Camp 4", image: "https://farm2.staticflickr.com/1281/4684194306_18ebcdb01c.jpg" },
+        {name: "Camp 5", image: "https://farm8.staticflickr.com/7205/7121863467_eb0aa64193.jpg" },
+        {name: "Camp 1", image: "https://farm4.staticflickr.com/3270/2617191414_c5d8a25a94.jpg" },
+        {name: "Camp 2", image: "https://farm3.staticflickr.com/2464/3694344957_14180103ed.jpg" },
+        {name: "Camp 3", image: "https://farm4.staticflickr.com/3872/14435096036_39db8f04bc.jpg" },
+        {name: "Camp 4", image: "https://farm2.staticflickr.com/1281/4684194306_18ebcdb01c.jpg" },
+        {name: "Camp 5", image: "https://farm8.staticflickr.com/7205/7121863467_eb0aa64193.jpg" }
+        
+    ];
 
 app.get("/", function(req, res){
     res.render("landing");
 });
 
 app.get("/campgrounds", function(req, res){
-    res.render("campgrounds");
+    res.render("campgrounds", {campgroundData:campgroundData});
 });
 
 
