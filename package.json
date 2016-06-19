@@ -1,0 +1,23 @@
+{
+  "name": "yelp_camp",
+  "version": "1.0.0",
+  "description": "Yelp for campgrounds with social activity",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hvpulok/Yelp_Camp.git"
+  },
+  "keywords": [
+    "yelp",
+    "campgrounds"
+  ],
+  "author": "Md Kamrul Hasan Pulok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hvpulok/Yelp_Camp/issues"
+  },
+  "homepage": "https://github.com/hvpulok/Yelp_Camp#readme"
+}
