@@ -10,17 +10,19 @@
 	padding-top: 10%;
 	color: white;
 	font-family: 'Cabin', sans-serif;
-	text-shadow: 0px 1px 7px rgba(0,0,0,0.6);
+
 }
 
 .landingPage .container h1{
 	font-weight: 800;
 	font-size: 4em;
+	text-shadow: 0px 1px 7px rgba(0,0,0,0.6);
 }
 
 .landingPage .container h4{
 	font-weight: 400;
 	font-size: 2em;
+	text-shadow: 0px 1px 7px rgba(0,0,0,0.6);
 }
 
 .landingPage .container hr{
