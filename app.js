@@ -8,7 +8,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-f
 
 
 app.get("/", function(req, res){
-    res.send("This is Home Page!");
+    // res.send("This is Home Page!");
+    res.render("landing");
 });
 
 
