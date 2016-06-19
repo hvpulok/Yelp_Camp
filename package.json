@@ -19,5 +19,10 @@
   "bugs": {
     "url": "https://github.com/hvpulok/Yelp_Camp/issues"
   },
-  "homepage": "https://github.com/hvpulok/Yelp_Camp#readme"
+  "homepage": "https://github.com/hvpulok/Yelp_Camp#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "ejs": "^2.4.2",
+    "express": "^4.14.0"
+  }
 }
