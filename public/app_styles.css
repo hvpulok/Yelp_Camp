@@ -1,0 +1,39 @@
+.landingPage{
+	background: url(https://images.unsplash.com/photo-1452800185063-6db5e12b8e2e?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=2700f9770386e4c5ebc53502a9099966);
+	background-position: center;
+	background-size: cover;
+	color: white;
+}
+
+.landingPage .container{
+	text-align: center;
+	padding-top: 10%;
+	color: white;
+	font-family: 'Cabin', sans-serif;
+	text-shadow: 0px 1px 7px rgba(0,0,0,0.6);
+}
+
+.landingPage .container h1{
+	font-weight: 800;
+	font-size: 4em;
+}
+
+.landingPage .container h4{
+	font-weight: 400;
+	font-size: 2em;
+}
+
+.landingPage .container hr{
+	width: 50%;
+	border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+#footNote_hr{
+    width: 100%;
+	border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+
+}
