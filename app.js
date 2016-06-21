@@ -32,6 +32,15 @@ app.get("/addCampground", function(req, res) {
     res.render("addCampground");
 });
 
+app.post("/addCampground",function(req,res){
+    var newCampgroundName = req.body.campgroundName;
+    var newcampgroundImageURL = req.body.campgroundImageURL;
+    var newCampground = {name: newCampgroundName, image: newcampgroundImageURL};
+    campgroundData.push(newCampground);
+    res.redirect("campgrounds");
+    
+});
+
 app.listen(process.env.PORT, process.env.IP, function(req, res){
     console.log("Yelp Camp Server has Started");
 });
