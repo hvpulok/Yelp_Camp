@@ -33,7 +33,7 @@ app.get("/campgrounds", function(req, res){
     });
 });
 
-app.get("/addCampground", function(req, res) {
+app.get("/campgrounds/new", function(req, res) {
     res.render("addCampground");
 });
 
