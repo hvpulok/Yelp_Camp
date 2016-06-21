@@ -37,7 +37,7 @@ app.get("/campgrounds/new", function(req, res) {
     res.render("addCampground");
 });
 
-app.post("/addCampground",function(req,res){
+app.post("/campgrounds",function(req,res){
     var newCampgroundName = req.body.campgroundName;
     var newcampgroundImageURL = req.body.campgroundImageURL;
     var newCampground = {name: newCampgroundName, image: newcampgroundImageURL};
