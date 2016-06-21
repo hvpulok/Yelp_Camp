@@ -1,10 +1,22 @@
-var express = require("express");
-var app = express();
-var bodyParser = require('body-parser');
+// Command to run Mongo DB: mongod --bind_ip=$IP --nojournal
+var express         = require("express"),
+    app             = express(),
+    bodyParser      = require('body-parser'),
+    mongoose        = require("mongoose");
 
 app.use(express.static("public")); //to automatically get files under public/ anyother folder
 app.set("view engine", "ejs"); // to exclude extention of "ejs" files
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
+mongoose.connect("mongodb://localhost/yelp_camp"); // connection mongoose to MongoDB
+
+// define mongoose campground schema for MongoDB
+var campgroundSchema = new mongoose.Schema({
+    name: String,
+    image: String
+});
+
+// define mongoose campground model based on schema
+var campground = mongoose.model("campground", campgroundSchema);
 
 var campgroundData = [
         {name: "Camp 1", image: "https://farm4.staticflickr.com/3270/2617191414_c5d8a25a94.jpg" },
