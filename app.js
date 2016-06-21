@@ -28,6 +28,9 @@ app.get("/campgrounds", function(req, res){
     res.render("campgrounds", {campgroundData:campgroundData});
 });
 
+app.get("/addCampground", function(req, res) {
+    res.render("addCampground");
+});
 
 app.listen(process.env.PORT, process.env.IP, function(req, res){
     console.log("Yelp Camp Server has Started");
