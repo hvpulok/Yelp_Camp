@@ -1,5 +1,7 @@
 .landingPage{
-	background: url(https://images.unsplash.com/photo-1452800185063-6db5e12b8e2e?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=2700f9770386e4c5ebc53502a9099966);
+	background: #136a8a; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #136a8a , #267871); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #136a8a , #267871); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	background-position: center;
 	background-size: cover;
 	color: white;
