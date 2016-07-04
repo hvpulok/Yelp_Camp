@@ -20,7 +20,7 @@
                     <h3><%= campground.name %></h3>
                     <p class="desc">
                         <% if(campground.description){ %>
-                            <%=campground.description.substring(0,300) %>
+                            <%-campground.description.substring(0,300) %>
                         <% } %>
                     </p>
                     <p>

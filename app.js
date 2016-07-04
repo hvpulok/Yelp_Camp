@@ -1,15 +1,17 @@
 // Command to run Mongo DB: mongod --bind_ip=$IP --nojournal
-var express         = require("express"),
-    app             = express(),
-    bodyParser      = require('body-parser'),
-    mongoose        = require("mongoose"),
-    methodOverride  = require("method-override");
+var express             = require("express"),
+    app                 = express(),
+    bodyParser          = require('body-parser'),
+    mongoose            = require("mongoose"),
+    expressSanitizer    = require("express-sanitizer"),
+    methodOverride      = require("method-override");
 
 app.use(express.static(__dirname + "/public")); //to automatically get files under public/ anyother folder
 app.set("view engine", "ejs"); // to exclude extention of "ejs" files
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
 mongoose.connect("mongodb://localhost/yelp_camp"); // connection mongoose to MongoDB
 app.use(methodOverride("_method"));
+app.use(expressSanitizer()); // use sanitizer to suppress user inputed scripts for security reasons
 
 // define mongoose campground schema for MongoDB
 var campgroundSchema = new mongoose.Schema({
@@ -43,6 +45,7 @@ app.get("/campgrounds/new", function(req, res) {
 
 app.post("/campgrounds",function(req,res){
     var newCampground = req.body.campground;
+    newCampground.description = req.sanitize(newCampground.description);
     
     // store in MongoDB
     campground.create(newCampground, function(err, campground){
@@ -101,6 +104,7 @@ app.get("/campgrounds/:id/edit", function(req, res) {
 
 app.put("/campgrounds/:id", function(req, res){
     var updatedCampground = req.body.campground;
+    updatedCampground.description = req.sanitize(updatedCampground.description);
     campground.findByIdAndUpdate(req.params.id, updatedCampground, function(err, updatedCampground_data){
         if(err){
             console.log(err);
