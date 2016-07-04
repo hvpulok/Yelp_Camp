@@ -17,10 +17,10 @@
             <div class="thumbnail">
                 <img src= <%= campground.image %> alt= <%= campground.name %> >
                 <div class="caption">
-                    <h3><%= campground.name %></h3>
+                    <h3 class="name"><%= campground.name %></h3>
                     <p class="desc">
                         <% if(campground.description){ %>
-                            <%-campground.description.substring(0,300) %>
+                            <%-campground.description.substring(0,300) %>...
                         <% } %>
                     </p>
                     <p>
