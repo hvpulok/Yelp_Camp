@@ -10,7 +10,7 @@
         <form class="form-horizontal" action="/campgrounds/<%= selectedCampground.id%>?_method=PUT" method="POST">
           <div class="form-group">
             <div class="col-md-12">
-              <input type="text" name="campground[name]" class="form-control" id="inputName" value=<%= selectedCampground.name%>>
+              <input type="text" name="campground[name]" class="form-control" id="inputName" value="<%= selectedCampground.name%>">
             </div>
           </div>
           <div class="form-group">
