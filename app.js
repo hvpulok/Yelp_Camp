@@ -72,6 +72,21 @@ app.get("/campgrounds/:id",function(req, res) {
 });
 
 
+// Delete selected campground route
+app.delete("/campgrounds/:id", function(req, res){
+    campground.findByIdAndRemove(req.params.id, function(err, deletedCampground){
+        if(err){
+            console.log(err);
+            res.redirect("/campgrounds");
+        }else {
+            console.log("Deleted Campground:");
+            console.log(deletedCampground);
+            res.redirect("/campgrounds");
+        }
+    });
+});
+
+
 app.listen(process.env.PORT, process.env.IP, function(req, res){
     console.log("Yelp Camp Server has Started");
 });
