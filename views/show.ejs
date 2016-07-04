@@ -1,0 +1,16 @@
+<% include partials/header %>
+<% include partials/navbar %>
+
+<!-- code to show jumbotron    -->
+<div class="container">
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><%=selectedCampground.name%></h3>
+    </div>
+    <div class="panel-body">
+        <img src=<%=selectedCampground.image%> alt=<%=selectedCampground.name%> class="img-rounded">
+    </div>
+</div>
+
+<% include partials/footer %>
