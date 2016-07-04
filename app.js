@@ -5,7 +5,8 @@ var express             = require("express"),
     mongoose            = require("mongoose"),
     expressSanitizer    = require("express-sanitizer"),
     methodOverride      = require("method-override"),
-    campground          = require("./models/campground");
+    campground          = require("./models/campground"),
+    comment             = require("./models/comment");
 
 app.use(express.static(__dirname + "/public")); //to automatically get files under public/ anyother folder
 app.set("view engine", "ejs"); // to exclude extention of "ejs" files
