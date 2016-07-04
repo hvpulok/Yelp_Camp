@@ -6,7 +6,11 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title"><%=selectedCampground.name%></h3>
+        <h3 class="panel-title"><%=selectedCampground.name%>
+        <a href="#" class="btn btn-success btn-xs pull-right" role="button" data-toggle="tooltip" data-placement="bottom" title="Edit This Campground"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+        <a href="#" class="btn btn-danger btn-xs pull-right" role="button" data-toggle="tooltip" data-placement="bottom" title="Delete This Campground"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+        </h3>
+        
     </div>
     <div class="panel-body">
         <img src=<%=selectedCampground.image%> alt=<%=selectedCampground.name%> class="img-rounded">
