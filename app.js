@@ -4,7 +4,7 @@ var express         = require("express"),
     bodyParser      = require('body-parser'),
     mongoose        = require("mongoose");
 
-app.use(express.static("public")); //to automatically get files under public/ anyother folder
+app.use(express.static(__dirname + "/public")); //to automatically get files under public/ anyother folder
 app.set("view engine", "ejs"); // to exclude extention of "ejs" files
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
 mongoose.connect("mongodb://localhost/yelp_camp"); // connection mongoose to MongoDB
@@ -54,6 +54,21 @@ app.post("/campgrounds",function(req,res){
 
     res.redirect("campgrounds");
 });
+
+
+// Route to show page of selected campground
+app.get("/campgrounds/:id",function(req, res) {
+    campground.findById(req.params.id, function(err, selectedCampground){
+        if(err){
+            console.log(err);
+        }else {
+            console.log(selectedCampground);
+            res.render("show", {selectedCampground:selectedCampground});
+        }
+    });
+
+});
+
 
 app.listen(process.env.PORT, process.env.IP, function(req, res){
     console.log("Yelp Camp Server has Started");
