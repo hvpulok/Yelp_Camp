@@ -4,7 +4,8 @@ var express             = require("express"),
     bodyParser          = require('body-parser'),
     mongoose            = require("mongoose"),
     expressSanitizer    = require("express-sanitizer"),
-    methodOverride      = require("method-override");
+    methodOverride      = require("method-override"),
+    campground          = require("./models/campground");
 
 app.use(express.static(__dirname + "/public")); //to automatically get files under public/ anyother folder
 app.set("view engine", "ejs"); // to exclude extention of "ejs" files
@@ -13,15 +14,7 @@ mongoose.connect("mongodb://localhost/yelp_camp"); // connection mongoose to Mon
 app.use(methodOverride("_method"));
 app.use(expressSanitizer()); // use sanitizer to suppress user inputed scripts for security reasons
 
-// define mongoose campground schema for MongoDB
-var campgroundSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    description: String
-});
 
-// define mongoose campground model based on schema
-var campground = mongoose.model("campground", campgroundSchema);
 
 app.get("/", function(req, res){
     res.render("landing");
