@@ -86,6 +86,31 @@ app.delete("/campgrounds/:id", function(req, res){
     });
 });
 
+//Edit Campground route
+app.get("/campgrounds/:id/edit", function(req, res) {
+   campground.findById(req.params.id, function(err,selectedCampground){
+       if(err){
+           console.log(err);
+       } else {
+           console.log("Selected campground for Edit:");
+           console.log(selectedCampground);
+           res.render("edit", {selectedCampground:selectedCampground}) 
+       }
+   }); 
+});
+
+app.put("/campgrounds/:id", function(req, res){
+    var updatedCampground = req.body.campground;
+    campground.findByIdAndUpdate(req.params.id, updatedCampground, function(err, updatedCampground_data){
+        if(err){
+            console.log(err);
+        }else{
+            res.redirect("/campgrounds/"+ req.params.id);
+        }
+    });
+});
+
+
 
 app.listen(process.env.PORT, process.env.IP, function(req, res){
     console.log("Yelp Camp Server has Started");

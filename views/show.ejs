@@ -21,13 +21,14 @@
             </div>
             <div class="col-md-9" >
                     <img id="campgroundImage" src=<%=selectedCampground.image%> alt=<%=selectedCampground.name%> class="img-rounded">
+                    <p class="desc"><%=selectedCampground.description%></p>
             </div>
         </div>
     </div>
     <div class="panel-footer">
         <div class="btn-group" role="group" aria-label="...">
             <form class="form-inline" action="/campgrounds/<%=selectedCampground.id%>?_method=DELETE" method="POST" >
-                <a href="#" class="btn btn-success" role="button" data-toggle="tooltip" data-placement="bottom" title="Edit This Campground"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
+                <a href="/campgrounds/<%=selectedCampground.id %>/edit" class="btn btn-success" role="button" data-toggle="tooltip" data-placement="bottom" title="Edit This Campground"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
                 <div class="form-group"><button class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Delete This Campground"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Delete</button></div>
             </form>
         </div>
