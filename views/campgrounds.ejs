@@ -1,5 +1,5 @@
-<body class="campgrounds">
 <% include partials/header %>
+<body class="campgrounds">
 <% include partials/navbar %>
 
 <!-- code to show jumbotron    -->
@@ -20,7 +20,7 @@
                     <h3><%= campground.name %></h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     <p>
-                        <a href="#" class="btn btn-info" role="button">Show More</a> 
+                        <a href="/campgrounds/<%=campground.id %>" class="btn btn-info" role="button">Show More</a> 
                         <a href="#" class="btn btn-success" role="button">Edit</a> 
                         <a href="#" class="btn btn-danger" role="button">Delete</a>
                     </p>
