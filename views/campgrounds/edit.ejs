@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+<body class="campgrounds">
+<% include ../partials/navbar %>
+<!-- code to show jumbotron    -->
+<div class="container">
+    <div class="jumbotron">
+        <h1>Edit Campground: <%= selectedCampground.name%></h1>
+        <p>Update related information:</p>
+
+        <form class="form-horizontal" action="/campgrounds/<%= selectedCampground.id%>?_method=PUT" method="POST">
+          <div class="form-group">
+            <div class="col-md-12">
+              <input type="text" name="campground[name]" class="form-control" id="inputName" value="<%= selectedCampground.name%>">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <input type="text" name="campground[image]" class="form-control" id="inputImageURL" value=<%= selectedCampground.image%>>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <textarea rows="10" name="campground[description]" placeholder="Description of The Campground"><%= selectedCampground.description%></textarea>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-primary btn-block">Update</button>
+            </div>
+          </div>
+        </form>
+    </div>
+
+<% include ../partials/footer %>

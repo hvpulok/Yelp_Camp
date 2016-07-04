@@ -1,0 +1,49 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+<!-- code to show jumbotron    -->
+<div class="container">
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title name"><%=selectedCampground.name%> </h2>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">Info-1</a>
+                    <a href="#" class="list-group-item">Info-2</a>
+                    <a href="#" class="list-group-item">Info-3</a>
+                    <a href="#" class="list-group-item">Info-4</a>
+                    <a href="#" class="list-group-item">Info-5</a>
+                </div>
+            </div>
+            <div class="col-md-9" >
+                <div class="thumbnail">
+                    <img id="campgroundImage" src=<%=selectedCampground.image%> alt=<%=selectedCampground.name%> class="img-rounded img-responsive">
+                    <div class="caption-full">
+                        <h4 class="name price pull-right">9.00$/night</h4>
+                        <h4 class="name"><a><%=selectedCampground.name%></a></h4>
+                        <p class="desc"><%-selectedCampground.description%></p>
+                    </div>
+                </div>
+                <div class="well">
+                    <div class="text-right">
+                        <a href="#" class="btn btn-success" role="button">Leave Review</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div class="btn-group" role="group" aria-label="...">
+            <form class="form-inline" action="/campgrounds/<%=selectedCampground.id%>?_method=DELETE" method="POST" >
+                <a href="/campgrounds/<%=selectedCampground.id %>/edit" class="btn btn-success" role="button" data-toggle="tooltip" data-placement="bottom" title="Edit This Campground"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
+                <div class="form-group"><button class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Delete This Campground"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Delete</button></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>
