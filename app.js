@@ -14,7 +14,8 @@ app.use(methodOverride("_method"));
 // define mongoose campground schema for MongoDB
 var campgroundSchema = new mongoose.Schema({
     name: String,
-    image: String
+    image: String,
+    description: String
 });
 
 // define mongoose campground model based on schema
@@ -35,14 +36,13 @@ app.get("/campgrounds", function(req, res){
     });
 });
 
+// Create new Campground Route
 app.get("/campgrounds/new", function(req, res) {
     res.render("addCampground");
 });
 
 app.post("/campgrounds",function(req,res){
-    var newCampgroundName = req.body.campgroundName;
-    var newcampgroundImageURL = req.body.campgroundImageURL;
-    var newCampground = {name: newCampgroundName, image: newcampgroundImageURL};
+    var newCampground = req.body.campground;
     
     // store in MongoDB
     campground.create(newCampground, function(err, campground){

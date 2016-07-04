@@ -18,7 +18,11 @@
                 <img src= <%= campground.image %> alt= <%= campground.name %> >
                 <div class="caption">
                     <h3><%= campground.name %></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>
+                        <% if(campground.description){ %>
+                            <%=campground.description.substring(0,300) %>
+                        <% } %>
+                    </p>
                     <p>
                         <form class="form-inline" action="/campgrounds/<%=campground.id%>?_method=DELETE" method="POST" >
                             <a href="/campgrounds/<%=campground.id %>" class="btn btn-info" role="button">Show More</a> 
