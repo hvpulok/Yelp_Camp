@@ -2,12 +2,14 @@
 var express         = require("express"),
     app             = express(),
     bodyParser      = require('body-parser'),
-    mongoose        = require("mongoose");
+    mongoose        = require("mongoose"),
+    methodOverride  = require("method-override");
 
 app.use(express.static(__dirname + "/public")); //to automatically get files under public/ anyother folder
 app.set("view engine", "ejs"); // to exclude extention of "ejs" files
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
 mongoose.connect("mongodb://localhost/yelp_camp"); // connection mongoose to MongoDB
+app.use(methodOverride("_method"));
 
 // define mongoose campground schema for MongoDB
 var campgroundSchema = new mongoose.Schema({
