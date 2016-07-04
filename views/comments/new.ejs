@@ -1,0 +1,27 @@
+<% include ../partials/header %>
+<body class="campgrounds">
+<% include ../partials/navbar %>
+<!-- code to show jumbotron    -->
+<div class="container">
+    <div class="jumbotron">
+        <h2 class="name">Add New Comments for <%=selectedCampground.name%></h2>
+        <form class="form-horizontal" action="/campgrounds/<%=selectedCampground.id%>" method="POST">
+          <div class="form-group">
+            <div class="col-md-12">
+              <input type="text" name="comment[text]" class="form-control" placeholder="Comment">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <input type="text" name="comment[author]" class="form-control" placeholder="Author">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </div>
+          </div>
+        </form>
+    </div>
+
+<% include ../partials/footer %>

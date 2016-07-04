@@ -30,8 +30,24 @@
                 </div>
                 <div class="well">
                     <div class="text-right">
-                        <a href="#" class="btn btn-success" role="button">Leave Review</a>
+                        <a href="/campgrounds/<%=selectedCampground.id%>/comment/new" class="btn btn-success" role="button">Leave Review</a>
+                        <hr>
                     </div>
+                    <!--For Comments-->
+                    <% selectedCampground.comments.forEach(function(comments){ %>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="https://en.opensuse.org/images/0/0b/Icon-user.png" alt="Author">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading"><%=comments.author%></h4>
+                                <%=comments.text%>
+                                <hr>
+                            </div>
+                        </div>
+                    <% }); %>
                 </div>
             </div>
         </div>

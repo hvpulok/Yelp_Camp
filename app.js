@@ -57,7 +57,7 @@ app.post("/campgrounds",function(req,res){
 
 // Route to show page of selected campground
 app.get("/campgrounds/:id",function(req, res) {
-    campground.findById(req.params.id, function(err, selectedCampground){
+    campground.findById(req.params.id).populate("comments").exec(function(err, selectedCampground){
         if(err){
             console.log(err);
         }else {
@@ -65,7 +65,6 @@ app.get("/campgrounds/:id",function(req, res) {
             res.render("campgrounds/show", {selectedCampground:selectedCampground});
         }
     });
-
 });
 
 
@@ -109,6 +108,43 @@ app.put("/campgrounds/:id", function(req, res){
 });
 
 
+//=============Comments Routes=======================================
+
+//Create Route
+app.get("/campgrounds/:id/comment/new", function(req, res) {
+    campground.findById(req.params.id, function(err, selectedCampground) {
+        if(err){
+            console.log(err);
+        } else{
+            res.render("comments/new", {selectedCampground:selectedCampground});
+        }
+    })
+});
+
+app.post("/campgrounds/:id", function(req, res){
+    //retrieve the comments from the form body
+    var newComment = req.body.comment;
+    //find the selected campground
+    campground.findById(req.params.id, function(err, selectedCampground) {
+        if(err){
+            console.log(err);
+        } else{
+            // Create newComment in comment DB
+            comment.create(newComment, function(err, newComment){
+                if(err){
+                    console.log(err);
+                } else{
+                    // Connect newComment to selectedCampground
+                    selectedCampground.comments.push(newComment);
+                    selectedCampground.save();
+                    // redirect to selectedCampground show page
+                    res.redirect("/campgrounds/" + req.params.id);
+                    console.log(selectedCampground)
+                }
+            });
+        }
+    })
+});
 
 app.listen(process.env.PORT, process.env.IP, function(req, res){
     console.log("Yelp Camp Server has Started");
