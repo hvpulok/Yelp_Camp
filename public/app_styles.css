@@ -46,3 +46,7 @@
     display:flex; 
     flex-wrap:wrap;
 }
+
+#campgroundImage{
+	width: 100%;
+}
