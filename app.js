@@ -61,7 +61,7 @@ app.get("/campgrounds/:id",function(req, res) {
         if(err){
             console.log(err);
         }else {
-            console.log(selectedCampground);
+            // console.log(selectedCampground);
             res.render("campgrounds/show", {selectedCampground:selectedCampground});
         }
     });
@@ -75,8 +75,8 @@ app.delete("/campgrounds/:id", function(req, res){
             console.log(err);
             res.redirect("/campgrounds");
         }else {
-            console.log("Deleted Campground:");
-            console.log(deletedCampground);
+            // console.log("Deleted Campground:");
+            // console.log(deletedCampground);
             res.redirect("/campgrounds");
         }
     });
@@ -88,8 +88,8 @@ app.get("/campgrounds/:id/edit", function(req, res) {
        if(err){
            console.log(err);
        } else {
-           console.log("Selected campground for Edit:");
-           console.log(selectedCampground);
+        //   console.log("Selected campground for Edit:");
+        //   console.log(selectedCampground);
            res.render("campgrounds/edit", {selectedCampground:selectedCampground}) 
        }
    }); 
@@ -139,7 +139,7 @@ app.post("/campgrounds/:id", function(req, res){
                     selectedCampground.save();
                     // redirect to selectedCampground show page
                     res.redirect("/campgrounds/" + req.params.id);
-                    console.log(selectedCampground)
+                    // console.log(selectedCampground);
                 }
             });
         }
