@@ -125,7 +125,7 @@ app.put("/campgrounds/:id", function(req, res){
 //=============Comments Routes=======================================
 
 //Create Route
-app.get("/campgrounds/:id/comment/new", function(req, res) {
+app.get("/campgrounds/:id/comment/new", isLoggedIn,function(req, res) {
     campground.findById(req.params.id, function(err, selectedCampground) {
         if(err){
             console.log(err);
@@ -135,7 +135,7 @@ app.get("/campgrounds/:id/comment/new", function(req, res) {
     })
 });
 
-app.post("/campgrounds/:id", function(req, res){
+app.post("/campgrounds/:id", isLoggedIn,function(req, res){
     //retrieve the comments from the form body
     var newComment = req.body.comment;
     //find the selected campground
