@@ -160,6 +160,26 @@ app.post("/campgrounds/:id", function(req, res){
     })
 });
 
+//============= Auth Routes=======================================
+// register route
+app.get("/register", function(req, res) {
+    res.render("register");
+});
+
+// Handle registeration or sign up logic
+app.post("/register", function(req, res) {
+    var newUser = new user({username: req.body.username});
+    user.register(newUser, req.body.password, function(err, user){
+       if(err){
+           console.log(err);
+           return res.render("register");
+       } 
+       passport.authenticate("local")(req, res, function(){
+            res.redirect("/campgrounds");
+       });
+    });
+})
+
 app.listen(process.env.PORT, process.env.IP, function(req, res){
     console.log("Yelp Camp Server has Started");
 });
