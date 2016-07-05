@@ -42,9 +42,19 @@
                                 </a>
                             </div>
                             <div class="media-body">
-                                <h5 class="media-heading name"><%=comments.author%></h5>
-                                <meta class="price pull-right"><%=comments.commentDate.toDateString()%>: </meta>
-                                <%=comments.text%>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <span class="price pull-right"><%=comments.commentDate.toDateString()%></span>
+                                        <h5 class="media-heading name"><%=comments.author%></h5>
+                                        <p>
+                                            <%=comments.text%>
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                
+                                
+                                
                                 <hr>
                             </div>
                         </div>
