@@ -30,6 +30,12 @@ passport.use(new LocalStrategy(user.authenticate()));
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
 
+// define middleware to make available user information in all pages
+app.use(function(req,res,next){
+   res.locals.currentUser = req.user;
+   next();
+});
+
 //=======Route Definitions============
 app.get("/", function(req, res){
     res.render("landing");
