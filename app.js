@@ -197,6 +197,15 @@ app.get("/logout", function(req, res) {
     res.redirect("/campgrounds");
 })
 
+// define middleware to check user already loggedin or not
+// which can be used to protect viewing pages from unlogged users
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
+
 app.listen(process.env.PORT, process.env.IP, function(req, res){
     console.log("Yelp Camp Server has Started");
 });
