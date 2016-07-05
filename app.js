@@ -7,8 +7,10 @@ var express             = require("express"),
     methodOverride      = require("method-override"),
     campground          = require("./models/campground"),
     comment             = require("./models/comment"),
-    user                = require("./models/user");         //requiring user model DB
-
+    user                = require("./models/user"),         //requiring user model DB
+    passport            = require("passport"),
+    LocalStrategy       = require("passport-local");
+    
 app.use(express.static(__dirname + "/public")); //to automatically get files under public/ anyother folder
 app.set("view engine", "ejs"); // to exclude extention of "ejs" files
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
@@ -16,8 +18,19 @@ mongoose.connect("mongodb://localhost/yelp_camp"); // connection mongoose to Mon
 app.use(methodOverride("_method"));
 app.use(expressSanitizer()); // use sanitizer to suppress user inputed scripts for security reasons
 
+//=======Passport Configurations============
+app.use(require("express-session")({
+    secret: "This world is beautiful",
+    resave: false,
+    saveUninitialized : false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(user.authenticate()));
+passport.serializeUser(user.serializeUser());
+passport.deserializeUser(user.deserializeUser());
 
-
+//=======Route Definitions============
 app.get("/", function(req, res){
     res.render("landing");
 });
