@@ -5,7 +5,7 @@
 <div class="container">
     <div class="jumbotron">
         <h2 class="name">Add New Comments for <%=selectedCampground.name%></h2>
-        <form class="form-horizontal" action="/campgrounds/<%=selectedCampground.id%>" method="POST">
+        <form class="form-horizontal" action="/campgrounds/<%=selectedCampground.id%>/comment" method="POST">
           <div class="form-group">
             <div class="col-md-12">
               <input type="text" name="comment[text]" class="form-control" placeholder="Comment">
