@@ -16,11 +16,11 @@ router.get("/", function(req, res){
 });
 
 // Create new Campground Route
-router.get("/new", function(req, res) {
+router.get("/new", isLoggedIn, function(req, res) {
     res.render("campgrounds/new");
 });
 
-router.post("/",function(req,res){
+router.post("/", isLoggedIn,function(req,res){
     var newCampground = req.body.campground;
     newCampground.description = req.sanitize(newCampground.description);
     
@@ -87,5 +87,14 @@ router.put("/:id", function(req, res){
         }
     });
 });
+
+// define middleware to check user already loggedin or not
+// which can be used to protect viewing pages from unlogged users
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
 
 module.exports = router;
