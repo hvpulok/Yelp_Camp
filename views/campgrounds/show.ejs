@@ -51,10 +51,6 @@
                                         </p>
                                     </div>
                                 </div>
-                                
-                                
-                                
-                                
                                 <hr>
                             </div>
                         </div>
@@ -64,12 +60,16 @@
         </div>
     </div>
     <div class="panel-footer">
-        <div class="btn-group" role="group" aria-label="...">
-            <form class="form-inline" action="/campgrounds/<%=selectedCampground.id%>?_method=DELETE" method="POST" >
-                <a href="/campgrounds/<%=selectedCampground.id %>/edit" class="btn btn-success" role="button" data-toggle="tooltip" data-placement="bottom" title="Edit This Campground"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
-                <div class="form-group"><button class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Delete This Campground"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Delete</button></div>
-            </form>
-        </div>
+        <!--show edit and delete buttons based on user ownership-->
+        <% if(currentUser && selectedCampground.author.id.equals(currentUser._id)){ %>
+            <div class="btn-group" role="group" aria-label="...">
+                <form class="form-inline" action="/campgrounds/<%=selectedCampground.id%>?_method=DELETE" method="POST" >
+                    <a href="/campgrounds/<%=selectedCampground.id %>/edit" class="btn btn-success" role="button" data-toggle="tooltip" data-placement="bottom" title="Edit This Campground"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
+                    <div class="form-group"><button class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Delete This Campground"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Delete</button></div>
+                </form>
+            </div>
+        <% } %>
+
     </div>
 </div>
 

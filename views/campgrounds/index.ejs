@@ -26,8 +26,11 @@
                     <p>
                         <form class="form-inline" action="/campgrounds/<%=campground.id%>?_method=DELETE" method="POST" >
                             <a href="/campgrounds/<%=campground.id %>" class="btn btn-info" role="button">Show More</a> 
-                            <a href="/campgrounds/<%=campground.id %>/edit" class="btn btn-success" role="button">Edit</a> 
-                            <div class="form-group"><button class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Delete This Campground"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Delete</button></div>
+                            <!--show edit and delete buttons based on user ownership-->
+                            <% if(currentUser && campground.author.id.equals(currentUser.id)){ %>
+                                <a href="/campgrounds/<%=campground.id %>/edit" class="btn btn-success" role="button">Edit</a> 
+                                <div class="form-group"><button class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Delete This Campground"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Delete</button></div>
+                            <% } %>
                         </form>
                     </p>
                 </div>

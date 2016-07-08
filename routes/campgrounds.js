@@ -53,7 +53,7 @@ router.get("/:id",function(req, res) {
 });
 
 // Delete selected campground route
-router.delete("/:id", function(req, res){
+router.delete("/:id", checkCampgroundOwnership, function(req, res){
     campground.findByIdAndRemove(req.params.id, function(err, deletedCampground){
         if(err){
             console.log(err);
@@ -67,7 +67,7 @@ router.delete("/:id", function(req, res){
 });
 
 //Edit Campground route
-router.get("/:id/edit", function(req, res) {
+router.get("/:id/edit", checkCampgroundOwnership, function(req, res) {
    campground.findById(req.params.id, function(err,selectedCampground){
        if(err){
            console.log(err);
@@ -79,7 +79,7 @@ router.get("/:id/edit", function(req, res) {
    }); 
 });
 
-router.put("/:id", function(req, res){
+router.put("/:id", checkCampgroundOwnership, function(req, res){
     var updatedCampground = req.body.campground;
     updatedCampground.description = req.sanitize(updatedCampground.description);
     campground.findByIdAndUpdate(req.params.id, updatedCampground, function(err, updatedCampground_data){
@@ -91,7 +91,7 @@ router.put("/:id", function(req, res){
     });
 });
 
-// define middleware to check user already loggedin or not
+// ======define middleware to check user already loggedin or not
 // which can be used to protect viewing pages from unlogged users
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
@@ -100,4 +100,24 @@ function isLoggedIn(req, res, next){
     res.redirect("/login");
 }
 
+// to check ownership of selected campground
+function checkCampgroundOwnership(req, res, next){
+    if(req.isAuthenticated()){
+        //find the selected campground
+        campground.findById(req.params.id, function(err, selectedCampground) {
+            if(err){
+                res.redirect("back"); // redirect to previous page
+            }else{
+                // check creator and current user is same or not
+                if(selectedCampground.author.id.equals(req.user.id)){
+                    return next();
+                } else{
+                    res.redirect("back"); // redirect to previous page
+                }
+            }
+        });
+    } else{
+        res.redirect("/login"); // redirect to login page
+    }
+}
 module.exports = router;
