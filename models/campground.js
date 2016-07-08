@@ -5,12 +5,19 @@ var campgroundSchema = new mongoose.Schema({
     name: String,
     image: String,
     description: String,
-    comments: [
-                {
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: "comment"
-                }
-            ]
+    author: {
+                id: {
+                        type: mongoose.Schema.Types.ObjectId,
+                        ref: "user"
+                    },
+                username: String
+            },
+    comments:   [
+                    {
+                        type: mongoose.Schema.Types.ObjectId,
+                        ref: "comment"
+                    }
+                ]
 });
 
 // define mongoose campground model based on schema

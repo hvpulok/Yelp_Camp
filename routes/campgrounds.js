@@ -23,12 +23,15 @@ router.get("/new", isLoggedIn, function(req, res) {
 router.post("/", isLoggedIn,function(req,res){
     var newCampground = req.body.campground;
     newCampground.description = req.sanitize(newCampground.description);
-    
     // store in MongoDB
     campground.create(newCampground, function(err, campground){
         if(err){
             console.log(err);
         } else {
+                // add username and id to newCampground
+            campground.author.id = req.user._id;
+            campground.author.username = req.user.username;
+            campground.save();
             console.log("Newly created Campground: ");    
             console.log(campground);
         }
