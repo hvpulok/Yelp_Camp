@@ -79,6 +79,18 @@ router.put("/:comment_id/", checkCommentOwnership, function(req, res){
     })
 });
 
+// comment delete route
+router.delete("/:comment_id/", checkCommentOwnership, function(req, res){
+    comment.findByIdAndRemove(req.params.comment_id, function(err, updatedCommentData){
+        if(err){
+            console.log(err);
+            res.redirect("/campgrounds/"+ req.params.id);
+        } else{
+            // console.log(updatedCommentData);
+            res.redirect("/campgrounds/"+ req.params.id);
+        }
+    })
+});
 
 // define middleware to check user already loggedin or not
 // which can be used to protect viewing pages from unlogged users
