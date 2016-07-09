@@ -43,6 +43,7 @@ middlewareObj.checkCommentOwnership = function (req, res, next){
             }
         });
     } else{
+        req.flash("error", "Please login first!"); // show flash message
         res.redirect("/login"); // redirect to login page
     }
 }
@@ -53,6 +54,7 @@ middlewareObj.isLoggedIn = function(req, res, next){
     if(req.isAuthenticated()){
         return next();
     }
+    req.flash("error", "Please login first!"); // show flash message
     res.redirect("/login");
 }
 

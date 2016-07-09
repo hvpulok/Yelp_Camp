@@ -31,3 +31,22 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<!-- Error Alerts-->
+<% if(error_message && error_message.length>0){ %>
+<div class="container">
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%=error_message%>
+  </div>
+</div>
+<% } %>
+
+<!-- Success Alerts-->
+<% if(success_message && success_message.length>0){ %>
+<div class="container">
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%=success_message%>
+  </div>
+</div>
+<% } %>

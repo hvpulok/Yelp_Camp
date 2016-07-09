@@ -9,7 +9,8 @@ var express             = require("express"),
     comment             = require("./models/comment"),
     user                = require("./models/user"),         //requiring user model DB
     passport            = require("passport"),
-    LocalStrategy       = require("passport-local");
+    LocalStrategy       = require("passport-local"),
+    flash               = require("connect-flash");
 
 // ==========Importing routers====================    
 var indexRoutes         = require("./routes/index"),
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-f
 mongoose.connect("mongodb://localhost/yelp_camp"); // connection mongoose to MongoDB
 app.use(methodOverride("_method"));
 app.use(expressSanitizer()); // use sanitizer to suppress user inputed scripts for security reasons
+app.use(flash());   //use flash npm to show flash messages
 
 //=======Passport Configurations============
 app.use(require("express-session")({
@@ -38,6 +40,8 @@ passport.deserializeUser(user.deserializeUser());
 // define middleware to make available user information in all pages
 app.use(function(req,res,next){
    res.locals.currentUser = req.user;
+   res.locals.error_message = req.flash("error");
+   res.locals.success_message = req.flash("success");
    next();
 });
 
