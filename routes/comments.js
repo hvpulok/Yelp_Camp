@@ -49,7 +49,7 @@ router.post("/", isLoggedIn,function(req, res){
 router.get("/:comment_id/edit", checkCommentOwnership, function(req, res){
     var selectedCampground = req.params.id;
     var selectedComment = req.params.comment_id;
-    campground.findById(selectedCampground).populate("comments").exec(function(err, selectedCampground){
+    campground.findById(selectedCampground,function(err, selectedCampground){
         if(err){
             console.log(err);
         }else {
@@ -67,7 +67,7 @@ router.get("/:comment_id/edit", checkCommentOwnership, function(req, res){
 });
 
 // Comment post/ PUT route
-router.put("/:comment_id/", checkCommentOwnership, function(req, res){
+router.put("/:comment_id", checkCommentOwnership, function(req, res){
     comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedCommentData){
         if(err){
             console.log(err);
@@ -80,7 +80,7 @@ router.put("/:comment_id/", checkCommentOwnership, function(req, res){
 });
 
 // comment delete route
-router.delete("/:comment_id/", checkCommentOwnership, function(req, res){
+router.delete("/:comment_id", checkCommentOwnership, function(req, res){
     comment.findByIdAndRemove(req.params.comment_id, function(err, updatedCommentData){
         if(err){
             console.log(err);
