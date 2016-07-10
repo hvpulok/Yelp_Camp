@@ -33,8 +33,8 @@ router.post("/", middleware.isLoggedIn,function(req,res){
             campground.author.id = req.user._id;
             campground.author.username = req.user.username;
             campground.save();
-            console.log("Newly created Campground: ");    
-            console.log(campground);
+            // console.log("Newly created Campground: ");    
+            // console.log(campground);
         }
     });
 
@@ -43,12 +43,23 @@ router.post("/", middleware.isLoggedIn,function(req,res){
 
 // Route to show page of selected campground
 router.get("/:id",function(req, res) {
+    //get all campgrounds from dB, this is to show campground links in sidebar
+    var allCampgroundData;
+    campground.find({}, function(err, campgroundData){
+        if(err){
+            console.log(err);
+        } else {
+            allCampgroundData = campgroundData;
+        }
+    });
+     //get selected campgrounds from dB
+    
     campground.findById(req.params.id).populate("comments").exec(function(err, selectedCampground){
         if(err){
             console.log(err);
         }else {
-            console.log(selectedCampground);
-            res.render("campgrounds/show", {selectedCampground:selectedCampground});
+            // console.log(selectedCampground);
+            res.render("campgrounds/show", {selectedCampground:selectedCampground, campgroundData:allCampgroundData});
         }
     });
 });
