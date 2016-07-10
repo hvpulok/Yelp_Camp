@@ -1,6 +1,6 @@
 # Yelp Camp
 This project is done under Web developer boot-camp course in Udemy. A crowd contributed site consisting of campgrounds. 
-
+[Click Here](https://peaceful-sands-32179.herokuapp.com/) to view the site.
 ## Features:
 * Responsive UI design with RESTful routing 
 * Crowd can view all the campgrounds in the platform 
