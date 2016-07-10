@@ -1,7 +1,7 @@
+# Yelp Camp
 This project is done under Web developer boot-camp course in Udemy. A crowd contributed site consisting of campgrounds. 
 
 ## Features:
-========
 * Responsive UI design with RESTful routing 
 * Crowd can view all the campgrounds in the platform 
 * Signed up User can add new campground with descriptions 
@@ -11,7 +11,6 @@ This project is done under Web developer boot-camp course in Udemy. A crowd cont
 * Only the reviewer can edit/delete his own reviews for selected campground. Others can only view.  
 
 ## Technologies learned and Used: 
-=============================
 * HTML
 * CSS 
 * Bootstrap 
