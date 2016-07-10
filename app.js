@@ -20,7 +20,10 @@ var indexRoutes         = require("./routes/index"),
 app.use(express.static(__dirname + "/public")); //to automatically get files under public/ anyother folder
 app.set("view engine", "ejs"); // to exclude extention of "ejs" files
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
-mongoose.connect("mongodb://localhost/yelp_camp"); // connection mongoose to MongoDB
+
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp"; // define environment variables to hide actual server address. In herouk env variables are defined in settings> config var
+mongoose.connect(url); // connection mongoose to local MongoDB// in cmd write this code : export DATABASEURL=mongodb://localhost/yelp_camp
+
 app.use(methodOverride("_method"));
 app.use(expressSanitizer()); // use sanitizer to suppress user inputed scripts for security reasons
 app.use(flash());   //use flash npm to show flash messages
